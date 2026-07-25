@@ -2,7 +2,7 @@
 
 A PostgreSQL portfolio project that models a simplified e-commerce platform — customers, product catalog, orders, payments, and reviews — and uses it to demonstrate practical SQL and database design skills, from schema design through analytics queries.
 
-> **Status:** Part 1 of 3 (Database design, schema, and initial data). Transactional data, views, indexes, and analytics queries are added in later parts.
+> **Status:** ✅ Complete — schema, sample data, views, indexes, materialized views, and 30+ analysis/interview-style queries are all in place and tested against PostgreSQL 16.
 
 ---
 
@@ -138,14 +138,14 @@ erDiagram
 
 ```
 ecommerce-analytics-sql/
-├── README.md               -- This file
-├── schema.sql               -- Table definitions, constraints, PK/FK
-├── data.sql                  -- Sample data (customers, categories, products)
-├── queries.sql               -- Analysis & business queries (Part 2)
-├── views.sql                  -- Reusable views (Part 2)
-├── indexes.sql                 -- Performance indexes (Part 2)
-├── materialized_views.sql       -- Materialized views (Part 2)
-├── screenshots/                  -- Query result screenshots for the README
+├── README.md                 -- This file
+├── schema.sql                 -- Table definitions, constraints, PK/FK
+├── data.sql                    -- Sample data: master + transactional
+├── queries.sql                  -- 30+ analysis, business & interview queries
+├── views.sql                     -- Reusable views
+├── indexes.sql                    -- Performance indexes
+├── materialized_views.sql          -- Materialized views + refresh notes
+├── screenshots/                     -- Query result screenshots for the README
 ├── LICENSE
 └── .gitignore
 ```
@@ -195,7 +195,7 @@ psql -U postgres -d ecommerce_db
 \i data.sql
 ```
 
-### 5. (Later parts) Run the remaining files in order
+### 5. Run the remaining files in order
 ```bash
 \i views.sql
 \i indexes.sql
@@ -263,6 +263,96 @@ By building and studying this project, you practice:
 - Partition `orders` by year for large-scale simulation
 - Add role-based access control (read-only analyst role vs. admin role)
 - Build a small dashboard (e.g., Metabase or a BI tool) on top of the views
+
+---
+
+## 📸 Screenshot Checklist
+
+For a recruiter-friendly repo, capture screenshots of these results and drop them in `screenshots/` using the filenames below. Recommended tool: pgAdmin's Query Tool (or `psql` output pasted into a terminal screenshot).
+
+| # | Filename | Query to run | What it shows |
+|---|---|---|---|
+| 1 | `01-er-diagram.png` | N/A (view README on GitHub) | The rendered Mermaid ER diagram |
+| 2 | `02-schema-tables.png` | `\d` in psql, or the pgAdmin table list | All 7 tables with their columns |
+| 3 | `03-sample-data.png` | `SELECT * FROM customers LIMIT 10;` | Realistic sample data |
+| 4 | `04-order-detail-join.png` | Query 2.2 in `queries.sql` | A multi-table join in action |
+| 5 | `05-revenue-by-category.png` | Query 3.1 in `queries.sql` | Aggregation with `GROUP BY` |
+| 6 | `06-top-customers-cte.png` | Query 4.2 in `queries.sql` | A CTE-based leaderboard |
+| 7 | `07-window-function-rank.png` | Query 5.1 in `queries.sql` | `RANK()` window function output |
+| 8 | `08-monthly-revenue-mv.png` | `SELECT * FROM mv_monthly_revenue;` | A materialized view result |
+| 9 | `09-rfm-segmentation.png` | Query 7.1 in `queries.sql` | Advanced analytics (RFM segments) |
+| 10 | `10-interview-question.png` | Query 8.1 or 8.6 in `queries.sql` | An interview-style problem solved |
+
+**Steps to capture:** run the query → confirm the result set looks correct → screenshot the query + result pane together → save with the filename above → commit to `screenshots/`.
+
+---
+
+## 🏷️ Repository Description & GitHub Topics
+
+**Suggested repo description** (for the GitHub "About" box):
+> PostgreSQL portfolio project modeling an e-commerce platform — schema design, joins, CTEs, window functions, views, indexing, and analytics queries. Built to demonstrate real SQL skills for Data/Analytics/AI Engineering roles.
+
+**Suggested GitHub topics/tags:**
+```
+sql, postgresql, postgres, database-design, data-analysis, data-engineering,
+sql-portfolio, portfolio-project, analytics-engineering, window-functions,
+ctes, database-schema, ecommerce-database, sql-practice, data-analyst-portfolio
+```
+
+---
+
+## ✅ Skills Covered Checklist
+
+- [x] Relational schema design & normalization (3NF)
+- [x] Primary keys, foreign keys, `ON DELETE` behavior
+- [x] `CHECK` constraints, `UNIQUE` constraints, generated columns
+- [x] Realistic multi-table sample data with referential integrity
+- [x] `INNER JOIN`, `LEFT JOIN`, self-joins
+- [x] `GROUP BY`, `HAVING`, aggregate functions
+- [x] Subqueries (scalar, correlated, and derived tables)
+- [x] Common Table Expressions (CTEs), including chained CTEs
+- [x] Window functions: `RANK`, `DENSE_RANK`, `ROW_NUMBER`, `LAG`, running totals
+- [x] Views for reusable business logic
+- [x] Materialized views with refresh strategy
+- [x] Indexing strategy (FK columns, filter columns, composite indexes)
+- [x] `PERCENTILE_CONT`, `DISTINCT ON`, `generate_series` (PostgreSQL-specific features)
+- [x] Conditional aggregation (`CASE WHEN`) as a pivot-table workaround
+- [x] Gaps-and-islands and relational-division query patterns
+- [x] Clear technical documentation (README, ER diagram, inline SQL comments)
+
+---
+
+## 📌 Final Execution Order
+
+```bash
+psql -U postgres -d ecommerce_db -f schema.sql
+psql -U postgres -d ecommerce_db -f data.sql
+psql -U postgres -d ecommerce_db -f views.sql
+psql -U postgres -d ecommerce_db -f indexes.sql
+psql -U postgres -d ecommerce_db -f materialized_views.sql
+psql -U postgres -d ecommerce_db -f queries.sql
+```
+
+Each file was run against a live PostgreSQL 16 instance in this order, with `ON_ERROR_STOP=1`, to confirm the whole pipeline executes without errors before being included here.
+
+---
+
+## 🔎 Final Repository Review
+
+| File | Present | Purpose |
+|---|---|---|
+| `README.md` | ✅ | Project documentation |
+| `schema.sql` | ✅ | 7 tables, constraints, PK/FK |
+| `data.sql` | ✅ | Master data + transactional data |
+| `queries.sql` | ✅ | 30+ queries across 8 sections |
+| `views.sql` | ✅ | 3 reusable views |
+| `indexes.sql` | ✅ | 9 performance indexes |
+| `materialized_views.sql` | ✅ | 2 materialized views + refresh notes |
+| `screenshots/` | ✅ | Folder ready for screenshot checklist above |
+| `LICENSE` | ✅ | MIT License |
+| `.gitignore` | ✅ | Excludes OS/editor/DB artifacts |
+
+No extra or unnecessary files (no notebooks, no config files beyond `.gitignore`). Repository is ready to push to GitHub.
 
 ---
 
