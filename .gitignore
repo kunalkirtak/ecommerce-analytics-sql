@@ -1,0 +1,24 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+
+# PostgreSQL local artifacts
+*.log
+pgdata/
+*.backup
+*.dump
+
+# Environment variables / credentials
+.env
+*.env.local
+
+# pgAdmin exports
+*.pgerd
+
+# Screenshots working files (keep only final images)
+screenshots/*.tmp
