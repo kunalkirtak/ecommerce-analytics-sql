@@ -286,19 +286,6 @@ For a recruiter-friendly repo, capture screenshots of these results and drop the
 
 ---
 
-## 🏷️ Repository Description & GitHub Topics
-
-**Suggested repo description** (for the GitHub "About" box):
-> PostgreSQL portfolio project modeling an e-commerce platform — schema design, joins, CTEs, window functions, views, indexing, and analytics queries. Built to demonstrate real SQL skills for Data/Analytics/AI Engineering roles.
-
-**Suggested GitHub topics/tags:**
-```
-sql, postgresql, postgres, database-design, data-analysis, data-engineering,
-sql-portfolio, portfolio-project, analytics-engineering, window-functions,
-ctes, database-schema, ecommerce-database, sql-practice, data-analyst-portfolio
-```
-
----
 
 ## ✅ Skills Covered Checklist
 
