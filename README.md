@@ -270,18 +270,17 @@ By building and studying this project, you practice:
 
 For a recruiter-friendly repo, capture screenshots of these results and drop them in `screenshots/` using the filenames below. Recommended tool: pgAdmin's Query Tool (or `psql` output pasted into a terminal screenshot).
 
-| # | Filename | Query to run | What it shows |
+| # | Filename | Query  | What it shows |
 |---|---|---|---|
-| 1 | `01-er-diagram.png` | N/A (view README on GitHub) | The rendered Mermaid ER diagram |
-| 2 | `02-schema-tables.png` | `\d` in psql, or the pgAdmin table list | All 7 tables with their columns |
-| 3 | `03-sample-data.png` | `SELECT * FROM customers LIMIT 10;` | Realistic sample data |
-| 4 | `04-order-detail-join.png` | Query 2.2 in `queries.sql` | A multi-table join in action |
-| 5 | `05-revenue-by-category.png` | Query 3.1 in `queries.sql` | Aggregation with `GROUP BY` |
-| 6 | `06-top-customers-cte.png` | Query 4.2 in `queries.sql` | A CTE-based leaderboard |
-| 7 | `07-window-function-rank.png` | Query 5.1 in `queries.sql` | `RANK()` window function output |
-| 8 | `08-monthly-revenue-mv.png` | `SELECT * FROM mv_monthly_revenue;` | A materialized view result |
-| 9 | `09-rfm-segmentation.png` | Query 7.1 in `queries.sql` | Advanced analytics (RFM segments) |
-| 10 | `10-interview-question.png` | Query 8.1 or 8.6 in `queries.sql` | An interview-style problem solved |
+| 1 | `schema-tables.png` | `\d` in psql, or the pgAdmin table list | All 7 tables |
+| 2 | `sample-data.png` | `SELECT * FROM customers LIMIT 10;` | Realistic sample data |
+| 3 | `order-detail-join.png` | Query 2.2 in `queries.sql` | A multi-table join in action |
+| 4 | `revenue-by-category.png` | Query 3.1 in `queries.sql` | Aggregation with `GROUP BY` |
+| 5 | `top-customers-cte.png` | Query 4.2 in `queries.sql` | A CTE-based leaderboard |
+| 6 | `window-function-rank.png` | Query 5.1 in `queries.sql` | `RANK()` window function output |
+| 7 | `monthly-revenue-mv.png` | `SELECT * FROM mv_monthly_revenue;` | A materialized view result |
+| 8 | `rfm-segmentation.png` | Query 7.1 in `queries.sql` | Advanced analytics (RFM segments) |
+| 9 | `interview-question.png` | Query 8.1  in `queries.sql` | An interview-style problem solved |
 
 **Steps to capture:** run the query → confirm the result set looks correct → screenshot the query + result pane together → save with the filename above → commit to `screenshots/`.
 
